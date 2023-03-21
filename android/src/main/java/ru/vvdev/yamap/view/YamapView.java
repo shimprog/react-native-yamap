@@ -473,6 +473,10 @@ public class YamapView extends MapView implements UserLocationObjectListener, Ca
                     getMap().setMapType(MapType.MAP);
                     break;
 
+                case "hybrid":
+                    getMap().setMapType(MapType.HYBRID);
+                    break;
+
                 default:
                     getMap().setMapType(MapType.VECTOR_MAP);
                     break;

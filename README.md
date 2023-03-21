@@ -1,3 +1,7 @@
+## Форк библиотеки react-native-yamap
+С попыткой сделать переключение слоев карты
+
+
 
 ## React Native Yandex Maps (Яндекс Карты)
 
@@ -147,7 +151,7 @@ type MasstransitVehicles = 'bus' | 'trolleybus' | 'tramway' | 'minibus' | 'subur
 
 type Vehicles = MasstransitVehicles | 'walk' | 'car';
 
-type MapType = 'none' | 'raster' | 'vector';
+type MapType = 'none' | 'raster' | 'vector' | 'hybrid';
 
 
 interface DrivingInfo {

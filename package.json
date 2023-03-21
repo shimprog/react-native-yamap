@@ -1,6 +1,6 @@
 {
-  "name": "react-native-yamap",
-  "version": "4.1.17",
+  "name": "react-native-yamap-shim",
+  "version": "0.0.1",
   "description": "Yandex.MapKit and Yandex.Geocoder for react-native",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -24,7 +24,7 @@
     "yandexmaps",
     "geocoder"
   ],
-  "author": "Nikita Sirotkin",
+  "author": "Alexander Shimarov",
   "license": "",
   "dependencies": {},
   "devDependencies": {

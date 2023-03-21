@@ -344,6 +344,9 @@
         self.mapWindow.map.mapType = YMKMapTypeNone;
     } else if ([type isEqual:@"raster"]) {
         self.mapWindow.map.mapType = YMKMapTypeMap;
+        }
+        else if ([type isEqual:@"hybrid"]) {
+                self.mapWindow.map.mapType = YMKMapTypeHybrid;
     } else {
         self.mapWindow.map.mapType = YMKMapTypeVectorMap;
     }

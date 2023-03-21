@@ -1,11 +1,10 @@
 {
   "name": "react-native-yamap-shim",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Yandex.MapKit and Yandex.Geocoder for react-native",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "scripts": {
-    "prepublishOnly": "rm -rf build && tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "homepage": "https://github.com/volga-volga/react-native-yamap",
@@ -25,15 +24,16 @@
     "geocoder"
   ],
   "author": "Alexander Shimarov",
-  "license": "",
+  "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "typescript": "^3.8.3",
     "@types/react": "*",
-    "@types/react-native": "*"
+    "@types/react-native": "*",
+    "typescript": "^3.8.3"
   },
   "peerDependencies": {
     "react": "*",
     "react-native": "*"
-  }
+  },
+  "repository": "https://github.com/shimprog/react-native-yamap.git"
 }

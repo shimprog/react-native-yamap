@@ -75,6 +75,12 @@ import com.yandex.mapkit.traffic.TrafficLayer;
 import com.yandex.mapkit.traffic.TrafficListener;
 import com.yandex.mapkit.traffic.TrafficLevel;
 
+import com.yandex.mapkit.images.DefaultImageUrlProvider;
+import com.yandex.mapkit.tiles.UrlProvider;
+import com.yandex.mapkit.layers.Layer;
+import com.yandex.mapkit.layers.LayerOptions;
+import com.yandex.mapkit.TileId;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -115,6 +121,9 @@ public class YamapView extends MapView implements UserLocationObjectListener, Ca
     private float maxFps = 60;
     static private HashMap<String, ImageProvider> icons = new HashMap<>();
 
+    private UrlProvider urlProvider;
+    private DefaultImageUrlProvider imageUrlProvider;
+
     void setImage(final String iconSource, final PlacemarkMapObject mapObject, final IconStyle iconStyle) {
         if (icons.get(iconSource)==null) {
             ImageLoader.DownloadImageBitmap(getContext(), iconSource, new Callback<Bitmap>() {
@@ -147,6 +156,8 @@ public class YamapView extends MapView implements UserLocationObjectListener, Ca
         getMap().addCameraListener(this);
         getMap().addInputListener(this);
         getMap().setMapLoadedListener(this);
+         Layer layer = new Layer("OpenStreetMap", "https://a.tile.openstreetmap.org/{z}/{x}/{y}.png");
+                            getMap().addLayer(layer);
     }
 
     // REF
@@ -463,6 +474,7 @@ public class YamapView extends MapView implements UserLocationObjectListener, Ca
     }
 
     public void setMapType(@Nullable String type) {
+
         if (type != null) {
             switch (type) {
                 case "none":
@@ -474,7 +486,7 @@ public class YamapView extends MapView implements UserLocationObjectListener, Ca
                     break;
 
                 case "hybrid":
-                    getMap().setMapType(MapType.HYBRID);
+                    layer.activate()
                     break;
 
                 default:

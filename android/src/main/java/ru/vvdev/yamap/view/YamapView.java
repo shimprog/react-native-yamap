@@ -121,6 +121,12 @@ public class YamapView extends MapView implements UserLocationObjectListener, Ca
     private float maxFps = 60;
     static private HashMap<String, ImageProvider> icons = new HashMap<>();
 
+ private UrlProvider urlProvider;
+    private DefaultImageUrlProvider imageUrlProvider;
+    private Projection projection;
+
+
+
     void setImage(final String iconSource, final PlacemarkMapObject mapObject, final IconStyle iconStyle) {
         if (icons.get(iconSource)==null) {
             ImageLoader.DownloadImageBitmap(getContext(), iconSource, new Callback<Bitmap>() {
@@ -480,8 +486,18 @@ public class YamapView extends MapView implements UserLocationObjectListener, Ca
                     break;
 
                 case "hybrid":
-                Layer layer = new Layer("OpenStreetMap", "https://a.tile.openstreetmap.org/{z}/{x}/{y}.png");
-                    getMap().addLayer(layer);
+
+                 urlProvider = (tileId, version) -> "https://maps-ios-pods-public.s3.yandex.net/mapkit_logo.png";
+                 imageUrlProvider = new DefaultImageUrlProvider();
+                 projection = Projections.getWgs84Mercator();
+                getMap().addLayer(
+                                "mapkit_logo",
+                                "image/png",
+                                new LayerOptions(),
+                                urlProvider,
+                                imageUrlProvider,
+                                projection);
+
                     break;
 
                 default:

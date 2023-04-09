@@ -57,6 +57,7 @@ export interface YaMapProps extends ViewProps {
   followUser?: boolean;
   logoPosition?: YandexLogoPosition;
   logoPadding?: YandexLogoPadding;
+  mapBox?: string;
 }
 
 const YaMapNativeComponent = requireNativeComponent<YaMapProps>('YamapView');

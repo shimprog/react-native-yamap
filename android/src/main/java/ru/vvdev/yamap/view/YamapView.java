@@ -475,6 +475,9 @@ public class YamapView extends MapView implements UserLocationObjectListener, Ca
     }
 
     public void setMapType(@Nullable String type) {
+        if(userMapBox != ""){
+                l.activate(false);
+            }
         if (type != null) {
             switch (type) {
                 case "none":
@@ -485,21 +488,12 @@ public class YamapView extends MapView implements UserLocationObjectListener, Ca
                     getMap().setMapType(MapType.MAP);
                     break;
 
-                case "hybrid":
-
-                 urlProvider = (tileId, version) -> "https://maps-ios-pods-public.s3.yandex.net/mapkit_logo.png";
-                 imageUrlProvider = new DefaultImageUrlProvider();
-                 projection = Projections.getWgs84Mercator();
-                getMap().addLayer(
-                                "mapkit_logo",
-                                "image/png",
-                                new LayerOptions(),
-                                urlProvider,
-                                imageUrlProvider,
-                                projection);
-
+                case "custom":
+                    if(userMapBox != ""){
+                        getMap().setMapType(MapType.VECTOR_MAP);
+                        l.activate(true);
+                    }
                     break;
-
                 default:
                     getMap().setMapType(MapType.VECTOR_MAP);
                     break;
@@ -528,6 +522,23 @@ public class YamapView extends MapView implements UserLocationObjectListener, Ca
         CameraPosition initialCameraPosition = new CameraPosition(initialPosition, initialRegionZoom, initialRegionAzimuth, initialRegionTilt);
         setCenter(initialCameraPosition, 0.f, 0);
     }
+
+    public void setMapBox(@Nullable String mapBox){
+                userMapBox = mapBox;
+                urlProvider = (tileId, version) -> "https://api.mapbox.com/v4/mapbox.satellite/"+tileId.getZ()+"/"+tileId.getX()+"/"+tileId.getY()+"@2x.jpg90?access_token="+mapBox;
+                DefaultImageUrlProvider imageUrlProvider = new DefaultImageUrlProvider();
+                Projection projection = Projections.getSphericalMercator();
+                l = getMap().addLayer(
+                                        "mapkit_logo",
+                                        "image/jpeg",
+                                        new LayerOptions(),
+                                        urlProvider,
+                                        imageUrlProvider,
+                                        projection
+                                );
+                l.invalidate("0.0.0");
+                l.activate(false);
+        }
 
     public void setLogoPosition(@Nullable ReadableMap params) {
         HorizontalAlignment horizontalAlignment = HorizontalAlignment.RIGHT;

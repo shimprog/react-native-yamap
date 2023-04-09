@@ -303,6 +303,13 @@ public class YamapViewManager extends ViewGroupManager<YamapView> {
         }
     }
 
+    @ReactProp(name = "mapBox")
+    public void setMapBox(View view, String mapBox) {
+        if (mapBox != null) {
+            castToYaMapView(view).setMapBox(mapBox);
+        }
+    }
+
     @ReactProp(name = "maxFps")
     public void setMaxFps(View view, float maxFps) {
         castToYaMapView(view).setMaxFps(maxFps);

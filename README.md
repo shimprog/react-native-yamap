@@ -7,3 +7,4 @@ mapBox=КЛЮЧ_ОТ_MAPBOX
 ```
 mapType=custom - для активации слоя
 ```
+## На expo только в dev режиме

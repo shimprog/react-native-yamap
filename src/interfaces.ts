@@ -37,7 +37,7 @@ export type MasstransitVehicles = 'bus' | 'trolleybus' | 'tramway' | 'minibus' |
 
 export type Vehicles = MasstransitVehicles | 'walk' | 'car';
 
-export type MapType = 'none' | 'raster' | 'vector' | 'hybrid';
+export type MapType = 'none' | 'raster' | 'vector' | 'custom';
 
 export interface DrivingInfo {
   time: string;

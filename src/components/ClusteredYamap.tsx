@@ -62,6 +62,7 @@ export interface ClusteredYaMapProps<T = any> extends ViewProps {
   followUser?: boolean;
   logoPosition?: YandexLogoPosition;
   logoPadding?: YandexLogoPadding;
+  mapBox?: string;
 }
 
 const YaMapNativeComponent = requireNativeComponent<Omit<ClusteredYaMapProps, 'clusteredMarkers'> & {clusteredMarkers: Point[]}>('ClusteredYamapView');

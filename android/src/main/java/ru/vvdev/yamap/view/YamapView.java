@@ -95,6 +95,9 @@ import ru.vvdev.yamap.utils.Callback;
 import ru.vvdev.yamap.utils.ImageLoader;
 import ru.vvdev.yamap.utils.RouteManager;
 
+import com.yandex.mapkit.geometry.geo.Projection;
+import com.yandex.mapkit.geometry.geo.Projections;
+
 public class YamapView extends MapView implements UserLocationObjectListener, CameraListener, InputListener, TrafficListener, MapLoadedListener {
     private final static Map<String, String> DEFAULT_VEHICLE_COLORS = new HashMap<String, String>() {{
         put("bus", "#59ACFF");
@@ -121,10 +124,11 @@ public class YamapView extends MapView implements UserLocationObjectListener, Ca
     private float maxFps = 60;
     static private HashMap<String, ImageProvider> icons = new HashMap<>();
 
- private UrlProvider urlProvider;
+    private UrlProvider urlProvider;
     private DefaultImageUrlProvider imageUrlProvider;
     private Projection projection;
-
+    private String userMapBox = "";
+    private Layer l;
 
 
     void setImage(final String iconSource, final PlacemarkMapObject mapObject, final IconStyle iconStyle) {

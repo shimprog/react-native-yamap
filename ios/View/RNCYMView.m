@@ -151,8 +151,8 @@
             [self removeReactSubview:(UIView *)childSubviews[i]];
         }
 //    }
-    [placemarks removeAllObjects];
-    [clusterCollection clear];
+//     [placemarks removeAllObjects];
+//     [clusterCollection clear];
     [_reactSubviews removeObject:subview];
     [super removeMarkerReactSubview:subview];
 }
